@@ -1528,6 +1528,417 @@
             opacity: 1;
             visibility: visible;
         }
+
+        /* ══════════════════════════════════════════════════════════════════════
+           3D CIRCULAR MOTION CERTIFICATE SHOWCASE
+        ══════════════════════════════════════════════════════════════════════ */
+        .cert-3d-wrapper {
+            position: relative;
+            width: 100%;
+            margin-top: 15px;
+            margin-bottom: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .cert-3d-header-bar {
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            margin-bottom: 22px;
+        }
+
+        .cert-3d-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 6px 16px;
+            background: rgba(255, 85, 0, 0.12);
+            border: 1px solid rgba(255, 85, 0, 0.35);
+            border-radius: 999px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: #ffaa55;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+        }
+
+        .cert-3d-badge-dot {
+            width: 8px;
+            height: 8px;
+            background: #ff5500;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ff5500;
+            animation: certPulseDot 1.5s infinite ease-in-out;
+        }
+
+        @keyframes certPulseDot {
+            0%, 100% { transform: scale(0.9); opacity: 0.7; }
+            50% { transform: scale(1.35); opacity: 1; }
+        }
+
+        .cert-3d-toolbar {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .cert-ctrl-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 6px;
+            height: 38px;
+            padding: 0 14px;
+            background: rgba(22, 22, 28, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.12);
+            border-radius: 10px;
+            color: #fff;
+            font-size: 0.82rem;
+            font-family: 'Outfit', sans-serif;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.25s ease;
+            backdrop-filter: blur(8px);
+        }
+
+        .cert-ctrl-btn:hover {
+            background: rgba(255, 85, 0, 0.2);
+            border-color: #ff5500;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(255, 85, 0, 0.25);
+        }
+
+        .cert-ctrl-btn:active {
+            transform: translateY(0);
+        }
+
+        .cert-upload-hint-btn {
+            background: linear-gradient(135deg, rgba(255, 85, 0, 0.25), rgba(255, 136, 0, 0.15));
+            border-color: rgba(255, 85, 0, 0.5);
+            color: #ffaa55;
+            font-weight: 600;
+        }
+
+        .cert-upload-hint-btn:hover {
+            background: linear-gradient(135deg, rgba(255, 85, 0, 0.4), rgba(255, 136, 0, 0.25));
+            border-color: #ff7700;
+            color: #ffffff;
+        }
+
+        /* 3D Stage / Viewport */
+        .cert-3d-stage {
+            position: relative;
+            width: 100%;
+            height: 520px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            perspective: 1300px;
+            perspective-origin: 50% 45%;
+            overflow: hidden;
+            user-select: none;
+            touch-action: pan-y;
+            border-radius: 24px;
+            background: radial-gradient(circle at 50% 50%, rgba(28, 22, 34, 0.6) 0%, rgba(6, 6, 10, 0.95) 75%);
+            border: 1px solid rgba(255, 255, 255, 0.07);
+            box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.85), 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        /* 3D Holographic Orbit Floor */
+        .cert-3d-orbit-floor {
+            position: absolute;
+            width: 740px;
+            height: 740px;
+            border-radius: 50%;
+            transform: rotateX(75deg) translateZ(-110px);
+            border: 2px dashed rgba(255, 85, 0, 0.35);
+            box-shadow: 0 0 60px rgba(255, 85, 0, 0.2), inset 0 0 60px rgba(255, 85, 0, 0.15);
+            pointer-events: none;
+        }
+
+        .cert-3d-orbit-floor::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 440px;
+            height: 440px;
+            transform: translate(-50%, -50%);
+            border-radius: 50%;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            background: radial-gradient(circle, rgba(255, 85, 0, 0.22) 0%, transparent 68%);
+        }
+
+        /* 3D Rotating Cylinder Ring */
+        .cert-3d-ring {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: transform 0.08s ease-out;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Individual 3D Card */
+        .cert-3d-card {
+            position: absolute;
+            width: 320px;
+            height: 236px;
+            border-radius: 18px;
+            background: rgba(18, 20, 28, 0.92);
+            border: 1px solid rgba(255, 85, 0, 0.32);
+            box-shadow: 0 16px 36px rgba(0, 0, 0, 0.7), 0 0 20px rgba(255, 85, 0, 0.12);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            overflow: hidden;
+            cursor: pointer;
+            transition: box-shadow 0.3s ease, border-color 0.3s ease, filter 0.3s ease;
+            transform-style: preserve-3d;
+            backface-visibility: visible;
+        }
+
+        .cert-3d-card:hover {
+            border-color: #ff5500;
+            box-shadow: 0 22px 50px rgba(0, 0, 0, 0.85), 0 0 35px rgba(255, 85, 0, 0.45);
+            filter: brightness(1.06);
+        }
+
+        .cert-3d-card-img-wrap {
+            position: relative;
+            width: 100%;
+            height: 155px;
+            background: #090b12;
+            overflow: hidden;
+        }
+
+        .cert-3d-card-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center center;
+            display: block;
+            transition: transform 0.5s ease;
+        }
+
+        .cert-3d-card:hover .cert-3d-card-img {
+            transform: scale(1.05);
+        }
+
+        .cert-3d-card-badge {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            padding: 4px 10px;
+            background: rgba(0, 0, 0, 0.75);
+            border: 1px solid rgba(255, 85, 0, 0.5);
+            border-radius: 6px;
+            font-size: 0.7rem;
+            font-weight: 700;
+            color: #ffaa55;
+            letter-spacing: 0.05em;
+            backdrop-filter: blur(6px);
+        }
+
+        .cert-3d-card-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            opacity: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            color: #fff;
+            font-size: 0.82rem;
+            font-weight: 600;
+            transition: opacity 0.3s ease;
+            backdrop-filter: blur(2px);
+        }
+
+        .cert-3d-card:hover .cert-3d-card-overlay {
+            opacity: 1;
+        }
+
+        .cert-3d-card-info {
+            padding: 12px 14px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 4px;
+            background: rgba(14, 15, 20, 0.95);
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+        }
+
+        .cert-3d-card-title {
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #ffffff;
+            margin: 0;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        .cert-3d-card-meta {
+            font-size: 0.76rem;
+            color: #8892b0;
+            margin: 0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .cert-3d-card-meta span {
+            color: #ff7722;
+            font-weight: 600;
+        }
+
+        .cert-3d-drag-hint {
+            margin-top: 14px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            color: #778;
+            font-size: 0.82rem;
+            text-align: center;
+        }
+
+        /* Lightbox Modal */
+        .cert-lightbox-modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(4, 4, 8, 0.9);
+            backdrop-filter: blur(16px);
+            z-index: 99999;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .cert-lightbox-modal.active {
+            display: flex;
+            opacity: 1;
+        }
+
+        .cert-lightbox-content {
+            position: relative;
+            max-width: 860px;
+            width: 100%;
+            background: #11141c;
+            border: 1px solid rgba(255, 85, 0, 0.45);
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 25px 70px rgba(0, 0, 0, 0.95), 0 0 45px rgba(255, 85, 0, 0.25);
+            animation: certModalZoom 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes certModalZoom {
+            from { transform: scale(0.92); opacity: 0; }
+            to { transform: scale(1); opacity: 1; }
+        }
+
+        .cert-lightbox-img-wrap {
+            width: 100%;
+            max-height: 480px;
+            background: #090a0f;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .cert-lightbox-img-wrap img {
+            max-width: 100%;
+            max-height: 480px;
+            object-fit: contain;
+            display: block;
+        }
+
+        .cert-lightbox-footer {
+            padding: 20px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 14px;
+            background: #141822;
+            border-top: 1px solid rgba(255, 255, 255, 0.08);
+        }
+
+        .cert-lightbox-close {
+            position: absolute;
+            top: 14px;
+            right: 14px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.65);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #fff;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            z-index: 10;
+        }
+
+        .cert-lightbox-close:hover {
+            background: #ff5500;
+            border-color: #ff5500;
+            transform: rotate(90deg);
+        }
+
+        /* Mobile responsive adjustments */
+        @media (max-width: 768px) {
+            .cert-3d-stage {
+                height: 380px;
+                border-radius: 18px;
+            }
+            .cert-3d-card {
+                width: 230px;
+                height: 182px;
+                border-radius: 14px;
+            }
+            .cert-3d-card-img-wrap {
+                height: 115px;
+            }
+            .cert-3d-card-title {
+                font-size: 0.8rem;
+            }
+            .cert-3d-card-meta {
+                font-size: 0.7rem;
+            }
+            .cert-3d-orbit-floor {
+                width: 480px;
+                height: 480px;
+            }
+            .cert-3d-header-bar {
+                justify-content: center;
+            }
+            .cert-3d-toolbar {
+                justify-content: center;
+            }
+        }
     </style>
 </head>
 
@@ -1566,6 +1977,7 @@
                 </div>
                 <a href="#skills" onclick="closeMobileNav()">SKILLS</a>
                 <a href="#education" onclick="closeMobileNav()">EDUCATION</a>
+                <a href="#certificates" onclick="closeMobileNav()">CERTIFICATES</a>
                 <a href="#reviews" onclick="closeMobileNav()">REVIEW</a>
                 <a href="#contact" onclick="closeMobileNav()">GET IN TOUCH</a>
             </div>
@@ -2044,9 +2456,162 @@
         </section>
 
         <!-- ── Certifications & Training ── -->
-        <section class="container fade-in-section" id="certifications">
-            <h2 class="section-title">Certifications &amp; Training</h2>
-            <p class="text-gray" style="margin-bottom: 36px; max-width: 680px; font-size: 1rem; line-height: 1.7;">Continuous Learning. Practical Skills. Technical Growth.</p>
+        <section class="container fade-in-section" id="certificates">
+            <h2 class="section-title">Certifications &amp; Credentials</h2>
+            <p class="text-gray" style="margin-bottom: 28px; max-width: 720px; font-size: 1rem; line-height: 1.7;">Continuous Learning. Practical Skills. Interactive 3D Circular Showcase.</p>
+
+            <!-- ── 3D Circular Motion Certificate Showcase ── -->
+            <div class="cert-3d-wrapper">
+                <!-- Header Toolbar & Controls -->
+                <div class="cert-3d-header-bar">
+                    <div class="cert-3d-badge">
+                        <span class="cert-3d-badge-dot"></span>
+                        <span>3D Circular Orbit Showcase</span>
+                    </div>
+
+                    <div class="cert-3d-toolbar">
+                        <button class="cert-ctrl-btn" id="cert-prev-btn" title="Rotate Left"><span>◀</span> Prev</button>
+                        <button class="cert-ctrl-btn" id="cert-play-btn" title="Pause / Play Auto-Rotation"><span>⏸</span> Pause</button>
+                        <button class="cert-ctrl-btn" id="cert-next-btn" title="Rotate Right">Next <span>▶</span></button>
+                        <button class="cert-ctrl-btn" id="cert-speed-btn" title="Cycle Rotation Speed">⚡ 1x</button>
+                        <button class="cert-ctrl-btn cert-upload-hint-btn" id="cert-quick-upload-btn" title="Quick Upload &amp; Preview Photo"><span>📷</span> Add / Test Photo</button>
+                        <input type="file" id="cert-file-picker" accept="image/*" style="display:none;">
+                    </div>
+                </div>
+
+                <!-- 3D Stage / Viewport -->
+                <div class="cert-3d-stage" id="cert-3d-stage">
+                    <!-- Holographic Orbit Floor -->
+                    <div class="cert-3d-orbit-floor"></div>
+
+                    <!-- 3D Rotating Ring of Cards -->
+                    <div class="cert-3d-ring" id="cert-3d-ring">
+
+                        <!-- ======================================================== -->
+                        <!-- CERTIFICATE 1: Prompt Engineering                        -->
+                        <!-- ======================================================== -->
+                        <div class="cert-3d-card" data-index="0" data-title="Prompt Engineering" data-issuer="FreeAcademy.ai • Final Exam Passed" data-badge="PROMPT ENG" data-id="FA-2026-PE-0K20KW">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/prompt_engineering.jpg" alt="Prompt Engineering Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">PROMPT ENG</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Prompt Engineering</h4>
+                                <div class="cert-3d-card-meta"><span>FreeAcademy.ai</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ======================================================== -->
+                        <!-- CERTIFICATE 2: Cybersécurité                             -->
+                        <!-- ======================================================== -->
+                        <div class="cert-3d-card" data-index="1" data-title="Cybersécurité" data-issuer="Sodruzhestvo • Les bases de la cybersécurité" data-badge="CYBERSÉCURITÉ" data-id="SODR-CYBER-2026">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/cybersecurite.jpg" alt="Cybersécurité Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">CYBERSÉCURITÉ</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Cybersécurité</h4>
+                                <div class="cert-3d-card-meta"><span>Sodruzhestvo</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ======================================================== -->
+                        <!-- CERTIFICATE 3: Put your photo in certificates/cert3.jpg  -->
+                        <!-- and change src="certificates/cert3.jpg"                  -->
+                        <!-- ======================================================== -->
+                        <div class="cert-3d-card" data-index="2" data-title="Cybersecurity Job Simulation" data-issuer="Deloitte • Forage Global Program" data-badge="DELOITTE" data-id="DEL-CYBER-SIM-712">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/cert3.svg" alt="Deloitte Cybersecurity Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">DELOITTE</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Cybersecurity Job Simulation</h4>
+                                <div class="cert-3d-card-meta"><span>Deloitte Global</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ======================================================== -->
+                        <!-- CERTIFICATE 4: Put your photo in certificates/cert4.jpg  -->
+                        <!-- and change src="certificates/cert4.jpg"                  -->
+                        <!-- ======================================================== -->
+                        <div class="cert-3d-card" data-index="3" data-title="Fundamentals of Remote Sensing" data-issuer="NASA Applied Remote Sensing Training (ARSET)" data-badge="NASA ARSET" data-id="NASA-ARSET-552">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/cert4.svg" alt="NASA ARSET Remote Sensing Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">NASA ARSET</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Fundamentals of Remote Sensing</h4>
+                                <div class="cert-3d-card-meta"><span>NASA ARSET</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ======================================================== -->
+                        <!-- CERTIFICATE 5: Put your photo in certificates/cert5.jpg  -->
+                        <!-- and change src="certificates/cert5.jpg"                  -->
+                        <!-- ======================================================== -->
+                        <div class="cert-3d-card" data-index="4" data-title="Google Gemini Certified Student" data-issuer="Google Cloud &amp; Gemini AI" data-badge="GOOGLE" data-id="GOOG-GEMINI-4109">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/cert5.svg" alt="Google Gemini Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">GOOGLE</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Google Gemini Certified Student</h4>
+                                <div class="cert-3d-card-meta"><span>Google Cloud</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- ======================================================== -->
+                        <!-- CERTIFICATE 6: Put your photo in certificates/cert6.jpg  -->
+                        <!-- and change src="certificates/cert6.jpg"                  -->
+                        <!-- ======================================================== -->
+                        <div class="cert-3d-card" data-index="5" data-title="Advanced Computer Applications (ADCA)" data-issuer="National Computer Literacy / Skill Board" data-badge="ADCA / CS" data-id="ADCA-CS-SKILL-301">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/cert6.svg" alt="ADCA Computer Applications Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">ADCA / CS</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Advanced Computer Applications</h4>
+                                <div class="cert-3d-card-meta"><span>Skill Mission</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Drag / Swipe interaction guide -->
+                <div class="cert-3d-drag-hint">
+                    <span>🔄 <strong>Tip:</strong> Drag horizontally (or swipe on phone) to spin the 3D circle • Hover to pause • Click any certificate to open fullscreen view</span>
+                </div>
+            </div>
+
+            <!-- Certificate Lightbox Modal -->
+            <div id="cert-lightbox" class="cert-lightbox-modal">
+                <div class="cert-lightbox-content">
+                    <button class="cert-lightbox-close" id="cert-modal-close" aria-label="Close">&times;</button>
+                    <div class="cert-lightbox-img-wrap">
+                        <img src="" alt="Certificate Full View" id="cert-modal-img">
+                    </div>
+                    <div class="cert-lightbox-footer">
+                        <div>
+                            <h3 id="cert-modal-title" style="margin: 0 0 6px 0; font-size: 1.15rem; color: #fff;"></h3>
+                            <div style="display: flex; gap: 12px; align-items: center; flex-wrap: wrap;">
+                                <span id="cert-modal-issuer" style="color: #ffaa55; font-size: 0.88rem; font-weight: 500;"></span>
+                                <span style="color: #555;">•</span>
+                                <span id="cert-modal-id" style="color: #8892b0; font-size: 0.82rem; font-family: monospace;"></span>
+                            </div>
+                        </div>
+                        <div style="display: flex; gap: 10px; align-items: center;">
+                            <span id="cert-modal-badge" style="padding: 6px 14px; background: rgba(255,85,0,0.18); border: 1px solid rgba(255,85,0,0.4); border-radius: 8px; color: #ff8833; font-weight: 700; font-size: 0.8rem;"></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <div class="grid-2" style="gap: 22px;">
 
@@ -2057,6 +2622,7 @@
                         <h3 style="margin: 0; font-size: 0.95rem; color: #ff5500; text-transform: uppercase; letter-spacing: 0.06em;">AI &amp; Data Science</h3>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Prompt Engineering</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">FreeAcademy.ai • Final Exam Passed (FA-2026-PE-0K20KW)</div></div></div>
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">AI – Data Engineering Analyst</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">NASSCOM / Skill India Digital Hub</div></div></div>
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Python 101 for Data Science</div></div></div>
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">SQL and Relational Databases 101</div></div></div>
@@ -2072,6 +2638,7 @@
                         <h3 style="margin: 0; font-size: 0.95rem; color: #ff5500; text-transform: uppercase; letter-spacing: 0.06em;">Cybersecurity &amp; Professional Training</h3>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Cybersécurité : Comment se protéger des escrocs</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Sodruzhestvo (Certificate of Completion)</div></div></div>
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Network Security Engineer</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Skill India</div></div></div>
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Cyber Job Simulation</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Deloitte / Forage</div></div></div>
                     </div>
@@ -2368,6 +2935,7 @@
                         <a href="#journey">My Journey</a>
                         <a href="#skills">Skills &amp; Tech</a>
                         <a href="#education">Education</a>
+                        <a href="#certificates">Certificates</a>
                         <a href="#unoflash">UNOFLASH</a>
                         <a href="#projects">Projects</a>
                         <a href="#contact">Get in Touch</a>
@@ -2778,6 +3346,7 @@
         function initSections() {
             document.querySelectorAll('.fade-in-section').forEach(el => el.classList.add('visible'));
             renderMarqueeTracks();
+            init3DCertificateCarousel();
 
             // Professional Scroll-Reveal for Mobile & Tablet Cards
             if ('IntersectionObserver' in window) {
@@ -2801,6 +3370,230 @@
                     if (index % 3 === 1) el.classList.add('reveal-delay-1');
                     else if (index % 3 === 2) el.classList.add('reveal-delay-2');
                     revealObserver.observe(el);
+                });
+            }
+        }
+
+        // ══════════════════════════════════════════════════════════════════════
+        // 3D CIRCULAR MOTION CERTIFICATE SHOWCASE
+        // ══════════════════════════════════════════════════════════════════════
+        function init3DCertificateCarousel() {
+            const stage = document.getElementById('cert-3d-stage');
+            const ring = document.getElementById('cert-3d-ring');
+            if (!stage || !ring) return;
+
+            const cards = Array.from(ring.querySelectorAll('.cert-3d-card'));
+            const totalCards = cards.length;
+            if (totalCards === 0) return;
+
+            let currentRotation = 0;
+            let autoSpeed = 0.22; // smooth degree per frame
+            let isPlaying = true;
+            let isHovered = false;
+            let isDragging = false;
+            let startX = 0;
+            let startRotation = 0;
+            let velocity = 0;
+            let lastX = 0;
+            let lastTime = 0;
+            let animId = null;
+
+            function getRadius() {
+                const w = window.innerWidth;
+                if (w < 480) return 210;
+                if (w < 768) return 260;
+                if (w < 1024) return 330;
+                return 400;
+            }
+
+            function positionCards() {
+                const radius = getRadius();
+                const step = 360 / totalCards;
+                cards.forEach((card, idx) => {
+                    const angle = idx * step;
+                    card.style.transform = `rotateY(${angle}deg) translateZ(${radius}px)`;
+                });
+            }
+
+            positionCards();
+            window.addEventListener('resize', positionCards);
+
+            // Animation Loop
+            function animateLoop() {
+                if (isPlaying && !isHovered && !isDragging) {
+                    currentRotation += autoSpeed;
+                } else if (!isDragging && Math.abs(velocity) > 0.01) {
+                    currentRotation += velocity;
+                    velocity *= 0.94; // inertia decay
+                }
+
+                ring.style.transform = `rotateY(${-currentRotation}deg)`;
+                animId = requestAnimationFrame(animateLoop);
+            }
+            animateLoop();
+
+            // Hover to pause
+            stage.addEventListener('mouseenter', () => { isHovered = true; });
+            stage.addEventListener('mouseleave', () => { 
+                if (!isDragging) isHovered = false; 
+            });
+
+            // Drag / Touch gestures
+            function startDrag(clientX) {
+                isDragging = true;
+                startX = clientX;
+                lastX = clientX;
+                lastTime = performance.now();
+                startRotation = currentRotation;
+                velocity = 0;
+            }
+
+            function moveDrag(clientX) {
+                if (!isDragging) return;
+                const now = performance.now();
+                const dt = now - lastTime || 16;
+                const instantV = (lastX - clientX) / dt * 7;
+                if (Math.abs(instantV) < 18) {
+                    velocity = instantV * 0.4;
+                }
+                lastX = clientX;
+                lastTime = now;
+
+                const factor = window.innerWidth < 768 ? 0.42 : 0.32;
+                currentRotation = startRotation + (startX - clientX) * factor;
+            }
+
+            function endDrag() {
+                if (!isDragging) return;
+                isDragging = false;
+                setTimeout(() => { isHovered = false; }, 600);
+            }
+
+            // Mouse interaction
+            stage.addEventListener('mousedown', (e) => {
+                if (e.button === 0) startDrag(e.clientX);
+            });
+            window.addEventListener('mousemove', (e) => {
+                if (isDragging) {
+                    moveDrag(e.clientX);
+                    e.preventDefault();
+                }
+            });
+            window.addEventListener('mouseup', endDrag);
+
+            // Touch interaction
+            stage.addEventListener('touchstart', (e) => {
+                if (e.touches.length === 1) startDrag(e.touches[0].clientX);
+            }, { passive: true });
+            window.addEventListener('touchmove', (e) => {
+                if (isDragging && e.touches.length === 1) moveDrag(e.touches[0].clientX);
+            }, { passive: true });
+            window.addEventListener('touchend', endDrag);
+
+            // Toolbar Controls
+            const step = 360 / totalCards;
+            const prevBtn = document.getElementById('cert-prev-btn');
+            const nextBtn = document.getElementById('cert-next-btn');
+            const playBtn = document.getElementById('cert-play-btn');
+            const speedBtn = document.getElementById('cert-speed-btn');
+
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    currentRotation = Math.round((currentRotation - step) / step) * step;
+                });
+            }
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    currentRotation = Math.round((currentRotation + step) / step) * step;
+                });
+            }
+            if (playBtn) {
+                playBtn.addEventListener('click', () => {
+                    isPlaying = !isPlaying;
+                    playBtn.innerHTML = isPlaying ? '<span>⏸</span> Pause' : '<span>▶</span> Play';
+                });
+            }
+            if (speedBtn) {
+                const speeds = [
+                    { label: '⚡ 1x', val: 0.22 },
+                    { label: '⚡ 1.5x', val: 0.42 },
+                    { label: '⚡ 0.5x', val: 0.1 }
+                ];
+                let sIdx = 0;
+                speedBtn.addEventListener('click', () => {
+                    sIdx = (sIdx + 1) % speeds.length;
+                    autoSpeed = speeds[sIdx].val;
+                    speedBtn.textContent = speeds[sIdx].label;
+                });
+            }
+
+            // Lightbox Modal
+            const modal = document.getElementById('cert-lightbox');
+            const modalImg = document.getElementById('cert-modal-img');
+            const modalTitle = document.getElementById('cert-modal-title');
+            const modalIssuer = document.getElementById('cert-modal-issuer');
+            const modalBadge = document.getElementById('cert-modal-badge');
+            const modalId = document.getElementById('cert-modal-id');
+            const modalClose = document.getElementById('cert-modal-close');
+
+            cards.forEach(card => {
+                card.addEventListener('click', () => {
+                    if (Math.abs(startX - lastX) > 8 && !isHovered) return;
+                    const img = card.querySelector('.cert-3d-card-img');
+                    const title = card.getAttribute('data-title') || '';
+                    const issuer = card.getAttribute('data-issuer') || '';
+                    const badge = card.getAttribute('data-badge') || '';
+                    const cid = card.getAttribute('data-id') || '';
+
+                    if (modal && modalImg) {
+                        modalImg.src = img.src;
+                        if (modalTitle) modalTitle.textContent = title;
+                        if (modalIssuer) modalIssuer.textContent = issuer;
+                        if (modalBadge) modalBadge.textContent = badge;
+                        if (modalId) modalId.textContent = cid;
+                        modal.classList.add('active');
+                        document.body.style.overflow = 'hidden';
+                    }
+                });
+            });
+
+            function closeModal() {
+                if (modal) {
+                    modal.classList.remove('active');
+                    document.body.style.overflow = '';
+                }
+            }
+
+            if (modalClose) modalClose.addEventListener('click', closeModal);
+            if (modal) {
+                modal.addEventListener('click', (e) => {
+                    if (e.target === modal) closeModal();
+                });
+            }
+            window.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape') closeModal();
+            });
+
+            // Quick Photo Tester / Client-side Uploader
+            const quickBtn = document.getElementById('cert-quick-upload-btn');
+            const fileInput = document.getElementById('cert-file-picker');
+            if (quickBtn && fileInput) {
+                quickBtn.addEventListener('click', () => {
+                    fileInput.click();
+                });
+                fileInput.addEventListener('change', (e) => {
+                    const file = e.target.files && e.target.files[0];
+                    if (!file) return;
+                    const reader = new FileReader();
+                    reader.onload = (evt) => {
+                        const targetCard = cards[0];
+                        const img = targetCard.querySelector('.cert-3d-card-img');
+                        if (img) {
+                            img.src = evt.target.result;
+                        }
+                        alert('Nayi certificate photo circular carousel me load ho gayi hai! 🎉\n\nPermanent rakhne ke liye photo ko "certificates/cert1.jpg" ke naam se folder me save karein.');
+                    };
+                    reader.readAsDataURL(file);
                 });
             }
         }
