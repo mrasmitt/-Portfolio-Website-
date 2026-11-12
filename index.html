@@ -1619,18 +1619,7 @@
             transform: translateY(0);
         }
 
-        .cert-upload-hint-btn {
-            background: linear-gradient(135deg, rgba(255, 85, 0, 0.25), rgba(255, 136, 0, 0.15));
-            border-color: rgba(255, 85, 0, 0.5);
-            color: #ffaa55;
-            font-weight: 600;
-        }
 
-        .cert-upload-hint-btn:hover {
-            background: linear-gradient(135deg, rgba(255, 85, 0, 0.4), rgba(255, 136, 0, 0.25));
-            border-color: #ff7700;
-            color: #ffffff;
-        }
 
         /* 3D Stage / Viewport */
         .cert-3d-stage {
@@ -2474,8 +2463,7 @@
                         <button class="cert-ctrl-btn" id="cert-play-btn" title="Pause / Play Auto-Rotation"><span>⏸</span> Pause</button>
                         <button class="cert-ctrl-btn" id="cert-next-btn" title="Rotate Right">Next <span>▶</span></button>
                         <button class="cert-ctrl-btn" id="cert-speed-btn" title="Cycle Rotation Speed">⚡ 1x</button>
-                        <button class="cert-ctrl-btn cert-upload-hint-btn" id="cert-quick-upload-btn" title="Quick Upload &amp; Preview Photo"><span>📷</span> Add / Test Photo</button>
-                        <input type="file" id="cert-file-picker" accept="image/*" style="display:none;">
+
                     </div>
                 </div>
 
@@ -3574,28 +3562,6 @@
                 if (e.key === 'Escape') closeModal();
             });
 
-            // Quick Photo Tester / Client-side Uploader
-            const quickBtn = document.getElementById('cert-quick-upload-btn');
-            const fileInput = document.getElementById('cert-file-picker');
-            if (quickBtn && fileInput) {
-                quickBtn.addEventListener('click', () => {
-                    fileInput.click();
-                });
-                fileInput.addEventListener('change', (e) => {
-                    const file = e.target.files && e.target.files[0];
-                    if (!file) return;
-                    const reader = new FileReader();
-                    reader.onload = (evt) => {
-                        const targetCard = cards[0];
-                        const img = targetCard.querySelector('.cert-3d-card-img');
-                        if (img) {
-                            img.src = evt.target.result;
-                        }
-                        alert('Nayi certificate photo circular carousel me load ho gayi hai! 🎉\n\nPermanent rakhne ke liye photo ko "certificates/cert1.jpg" ke naam se folder me save karein.');
-                    };
-                    reader.readAsDataURL(file);
-                });
-            }
         }
 
         window.addEventListener('DOMContentLoaded', initSections);
