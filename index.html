@@ -1625,12 +1625,12 @@
         .cert-3d-stage {
             position: relative;
             width: 100%;
-            height: 520px;
+            height: 560px;
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 1300px;
-            perspective-origin: 50% 45%;
+            perspective: 1400px;
+            perspective-origin: 50% 46%;
             overflow: hidden;
             user-select: none;
             touch-action: pan-y;
@@ -1643,12 +1643,12 @@
         /* 3D Holographic Orbit Floor */
         .cert-3d-orbit-floor {
             position: absolute;
-            width: 740px;
-            height: 740px;
+            width: 950px;
+            height: 950px;
             border-radius: 50%;
             transform: rotateX(75deg) translateZ(-110px);
             border: 2px dashed rgba(255, 85, 0, 0.35);
-            box-shadow: 0 0 60px rgba(255, 85, 0, 0.2), inset 0 0 60px rgba(255, 85, 0, 0.15);
+            box-shadow: 0 0 70px rgba(255, 85, 0, 0.22), inset 0 0 70px rgba(255, 85, 0, 0.16);
             pointer-events: none;
         }
 
@@ -1657,8 +1657,8 @@
             position: absolute;
             top: 50%;
             left: 50%;
-            width: 440px;
-            height: 440px;
+            width: 550px;
+            height: 550px;
             transform: translate(-50%, -50%);
             border-radius: 50%;
             border: 1px solid rgba(255, 255, 255, 0.1);
@@ -1900,16 +1900,16 @@
         /* Mobile responsive adjustments */
         @media (max-width: 768px) {
             .cert-3d-stage {
-                height: 380px;
+                height: 420px;
                 border-radius: 18px;
             }
             .cert-3d-card {
-                width: 230px;
-                height: 182px;
+                width: 220px;
+                height: 175px;
                 border-radius: 14px;
             }
             .cert-3d-card-img-wrap {
-                height: 115px;
+                height: 110px;
             }
             .cert-3d-card-title {
                 font-size: 0.8rem;
@@ -1918,8 +1918,8 @@
                 font-size: 0.7rem;
             }
             .cert-3d-orbit-floor {
-                width: 480px;
-                height: 480px;
+                width: 600px;
+                height: 600px;
             }
             .cert-3d-header-bar {
                 justify-content: center;
@@ -2475,9 +2475,7 @@
                     <!-- 3D Rotating Ring of Cards -->
                     <div class="cert-3d-ring" id="cert-3d-ring">
 
-                        <!-- ======================================================== -->
-                        <!-- CERTIFICATE 1: Prompt Engineering                        -->
-                        <!-- ======================================================== -->
+                        <!-- 1. Prompt Engineering -->
                         <div class="cert-3d-card" data-index="0" data-title="Prompt Engineering" data-issuer="FreeAcademy.ai • Final Exam Passed" data-badge="PROMPT ENG" data-id="FA-2026-PE-0K20KW">
                             <div class="cert-3d-card-img-wrap">
                                 <img src="certificates/prompt_engineering.jpg" alt="Prompt Engineering Certificate" class="cert-3d-card-img">
@@ -2490,9 +2488,7 @@
                             </div>
                         </div>
 
-                        <!-- ======================================================== -->
-                        <!-- CERTIFICATE 2: Cybersécurité                             -->
-                        <!-- ======================================================== -->
+                        <!-- 2. Cybersécurité -->
                         <div class="cert-3d-card" data-index="1" data-title="Cybersécurité" data-issuer="Sodruzhestvo • Les bases de la cybersécurité" data-badge="CYBERSÉCURITÉ" data-id="SODR-CYBER-2026">
                             <div class="cert-3d-card-img-wrap">
                                 <img src="certificates/cybersecurite.jpg" alt="Cybersécurité Certificate" class="cert-3d-card-img">
@@ -2505,67 +2501,159 @@
                             </div>
                         </div>
 
-                        <!-- ======================================================== -->
-                        <!-- CERTIFICATE 3: Put your photo in certificates/cert3.jpg  -->
-                        <!-- and change src="certificates/cert3.jpg"                  -->
-                        <!-- ======================================================== -->
-                        <div class="cert-3d-card" data-index="2" data-title="Cybersecurity Job Simulation" data-issuer="Deloitte • Forage Global Program" data-badge="DELOITTE" data-id="DEL-CYBER-SIM-712">
+                        <!-- 3. TCS iON AI Foundation -->
+                        <div class="cert-3d-card" data-index="2" data-title="TCS iON Career Edge – AI Foundation" data-issuer="Tata Consultancy Services (TCS iON)" data-badge="TCS iON AI" data-id="279243-33521379-1016">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/cert3.svg" alt="Deloitte Cybersecurity Certificate" class="cert-3d-card-img">
-                                <div class="cert-3d-card-badge">DELOITTE</div>
+                                <img src="certificates/tcs_ion_ai_foundation.jpg" alt="TCS iON Career Edge AI Foundation Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">TCS iON AI</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
                             <div class="cert-3d-card-info">
-                                <h4 class="cert-3d-card-title">Cybersecurity Job Simulation</h4>
-                                <div class="cert-3d-card-meta"><span>Deloitte Global</span> <span>2026</span></div>
+                                <h4 class="cert-3d-card-title">TCS iON – AI Foundation</h4>
+                                <div class="cert-3d-card-meta"><span>Tata Consultancy Services</span> <span>2026</span></div>
                             </div>
                         </div>
 
-                        <!-- ======================================================== -->
-                        <!-- CERTIFICATE 4: Put your photo in certificates/cert4.jpg  -->
-                        <!-- and change src="certificates/cert4.jpg"                  -->
-                        <!-- ======================================================== -->
-                        <div class="cert-3d-card" data-index="3" data-title="Fundamentals of Remote Sensing" data-issuer="NASA Applied Remote Sensing Training (ARSET)" data-badge="NASA ARSET" data-id="NASA-ARSET-552">
+                        <!-- 4. EY & Microsoft AI Skills Passport -->
+                        <div class="cert-3d-card" data-index="3" data-title="AI Skills Passport" data-issuer="EY &amp; Microsoft" data-badge="EY &amp; MSFT" data-id="EY-MSFT-AI-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/cert4.svg" alt="NASA ARSET Remote Sensing Certificate" class="cert-3d-card-img">
-                                <div class="cert-3d-card-badge">NASA ARSET</div>
+                                <img src="certificates/ey_microsoft_ai_passport.jpg" alt="EY and Microsoft AI Skills Passport Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">EY &amp; MSFT</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
                             <div class="cert-3d-card-info">
-                                <h4 class="cert-3d-card-title">Fundamentals of Remote Sensing</h4>
-                                <div class="cert-3d-card-meta"><span>NASA ARSET</span> <span>2026</span></div>
+                                <h4 class="cert-3d-card-title">AI Skills Passport</h4>
+                                <div class="cert-3d-card-meta"><span>EY &amp; Microsoft</span> <span>2026</span></div>
                             </div>
                         </div>
 
-                        <!-- ======================================================== -->
-                        <!-- CERTIFICATE 5: Put your photo in certificates/cert5.jpg  -->
-                        <!-- and change src="certificates/cert5.jpg"                  -->
-                        <!-- ======================================================== -->
-                        <div class="cert-3d-card" data-index="4" data-title="Google Gemini Certified Student" data-issuer="Google Cloud &amp; Gemini AI" data-badge="GOOGLE" data-id="GOOG-GEMINI-4109">
+                        <!-- 5. AI - Data Engineering Analyst (NASSCOM / Skill India) -->
+                        <div class="cert-3d-card" data-index="4" data-title="AI – Data Engineering Analyst" data-issuer="NASSCOM • Skill India Digital Hub" data-badge="SKILL INDIA" data-id="NASSCOM-AI-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/cert5.svg" alt="Google Gemini Certificate" class="cert-3d-card-img">
-                                <div class="cert-3d-card-badge">GOOGLE</div>
+                                <img src="certificates/nasscom_ai_data_engineer.jpg" alt="AI Data Engineering Analyst Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">SKILL INDIA</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
                             <div class="cert-3d-card-info">
-                                <h4 class="cert-3d-card-title">Google Gemini Certified Student</h4>
-                                <div class="cert-3d-card-meta"><span>Google Cloud</span> <span>2026</span></div>
+                                <h4 class="cert-3d-card-title">AI – Data Engineering</h4>
+                                <div class="cert-3d-card-meta"><span>NASSCOM / Skill India</span> <span>2026</span></div>
                             </div>
                         </div>
 
-                        <!-- ======================================================== -->
-                        <!-- CERTIFICATE 6: Put your photo in certificates/cert6.jpg  -->
-                        <!-- and change src="certificates/cert6.jpg"                  -->
-                        <!-- ======================================================== -->
-                        <div class="cert-3d-card" data-index="5" data-title="Advanced Computer Applications (ADCA)" data-issuer="National Computer Literacy / Skill Board" data-badge="ADCA / CS" data-id="ADCA-CS-SKILL-301">
+                        <!-- 6. Mastering Power BI -->
+                        <div class="cert-3d-card" data-index="5" data-title="Mastering Power BI: Data Analysis &amp; Dashboard" data-issuer="Skill India Digital Hub • PHN Technology" data-badge="POWER BI" data-id="PHN-SKILL-PBI-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/cert6.svg" alt="ADCA Computer Applications Certificate" class="cert-3d-card-img">
-                                <div class="cert-3d-card-badge">ADCA / CS</div>
+                                <img src="certificates/skillindia_power_bi.jpg" alt="Mastering Power BI Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">POWER BI</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
                             <div class="cert-3d-card-info">
-                                <h4 class="cert-3d-card-title">Advanced Computer Applications</h4>
-                                <div class="cert-3d-card-meta"><span>Skill Mission</span> <span>2026</span></div>
+                                <h4 class="cert-3d-card-title">Mastering Power BI</h4>
+                                <div class="cert-3d-card-meta"><span>Skill India / PHN</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 7. IT Forensic Analyst -->
+                        <div class="cert-3d-card" data-index="6" data-title="IT Forensic Analyst" data-issuer="NASSCOM • Skill India Digital Hub" data-badge="IT FORENSIC" data-id="NASSCOM-IT-FOR-2026">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/nasscom_it_forensic.jpg" alt="IT Forensic Analyst Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">IT FORENSIC</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">IT Forensic Analyst</h4>
+                                <div class="cert-3d-card-meta"><span>NASSCOM / Skill India</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 8. Coursera WordPress Website -->
+                        <div class="cert-3d-card" data-index="7" data-title="Build a Free Website with WordPress" data-issuer="Coursera Project Network" data-badge="COURSERA" data-id="5ZJZP08VPDDI">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/coursera_wordpress.jpg" alt="Coursera WordPress Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">COURSERA</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Website with WordPress</h4>
+                                <div class="cert-3d-card-meta"><span>Coursera Network</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 9. Internshala AI Prompt Engineering -->
+                        <div class="cert-3d-card" data-index="8" data-title="AI Prompt Engineering Internship Selection" data-issuer="Internshala • InAmigos Foundation" data-badge="INTERNSHIP" data-id="e9bflpmek3l">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/internshala_ai_prompt_eng.jpg" alt="AI Prompt Engineering Internship Selection" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">INTERNSHIP</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">AI Prompt Engineering</h4>
+                                <div class="cert-3d-card-meta"><span>Internshala / InAmigos</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 10. Internshala AI Web Development -->
+                        <div class="cert-3d-card" data-index="9" data-title="AI Web Development Internship Selection" data-issuer="Internshala • InAmigos Foundation" data-badge="INTERNSHIP" data-id="5o2mvf5b4mi">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/internshala_ai_web_dev.jpg" alt="AI Web Development Internship Selection" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">INTERNSHIP</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">AI Web Development</h4>
+                                <div class="cert-3d-card-meta"><span>Internshala / InAmigos</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 11. YuvaIntern Data Science with Python Analyst -->
+                        <div class="cert-3d-card" data-index="10" data-title="Data Science with Python Analyst Internship" data-issuer="YuvaIntern • Henry Harvin &amp; NSDC" data-badge="EXPERIENCE" data-id="YI/2026/212465/461426">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/yuvaintern_python_data_science.jpg" alt="YuvaIntern Data Science with Python Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">EXPERIENCE</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Data Science with Python</h4>
+                                <div class="cert-3d-card-meta"><span>YuvaIntern / Henry Harvin</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 12. Internshala Campus Ambassador -->
+                        <div class="cert-3d-card" data-index="11" data-title="Campus Ambassador Internship Selection" data-issuer="Internshala • NayePankh Foundation" data-badge="LEADERSHIP" data-id="6jqe4gqklpa">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/internshala_campus_ambassador.jpg" alt="Campus Ambassador Internship Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">LEADERSHIP</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Campus Ambassador</h4>
+                                <div class="cert-3d-card-meta"><span>Internshala / NayePankh</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 13. Cyber Sahyog National Cyber Awareness -->
+                        <div class="cert-3d-card" data-index="12" data-title="National Cyber Awareness (100% Score)" data-issuer="Cyber Sahyog • Cyber Dost / I4C" data-badge="CYBER AWARENESS" data-id="CSY-0U4GUOWU">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/cyber_sahyog_awareness.jpg" alt="National Cyber Awareness Quiz Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">CYBER AWARENESS</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">National Cyber Awareness</h4>
+                                <div class="cert-3d-card-meta"><span>Cyber Sahyog / Cyber Dost</span> <span>2026</span></div>
+                            </div>
+                        </div>
+
+                        <!-- 14. Viksit Bharat Quiz -->
+                        <div class="cert-3d-card" data-index="13" data-title="Viksit Bharat Young Leaders Dialogue Quiz" data-issuer="Ministry of Youth Affairs • MyGov" data-badge="MYGOV / GOVT" data-id="VBYLD-2027">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/viksit_bharat_quiz.jpg" alt="Viksit Bharat Quiz Certificate" class="cert-3d-card-img">
+                                <div class="cert-3d-card-badge">MYGOV / GOVT</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Viksit Bharat Quiz</h4>
+                                <div class="cert-3d-card-meta"><span>Ministry of Youth Affairs</span> <span>2026</span></div>
                             </div>
                         </div>
 
@@ -2603,57 +2691,62 @@
 
             <div class="grid-2" style="gap: 22px;">
 
-                <!-- AI & Data Science -->
+                <!-- AI, Data Science & Analytics -->
                 <div class="glass-panel" style="padding: 26px; border-radius: 18px;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
                         <span style="font-size: 1.3rem;">🤖</span>
-                        <h3 style="margin: 0; font-size: 0.95rem; color: #ff5500; text-transform: uppercase; letter-spacing: 0.06em;">AI &amp; Data Science</h3>
+                        <h3 style="margin: 0; font-size: 0.95rem; color: #ff5500; text-transform: uppercase; letter-spacing: 0.06em;">AI, Data Science &amp; Analytics</h3>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Prompt Engineering</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">FreeAcademy.ai • Final Exam Passed (FA-2026-PE-0K20KW)</div></div></div>
-                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">AI – Data Engineering Analyst</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">NASSCOM / Skill India Digital Hub</div></div></div>
-                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Python 101 for Data Science</div></div></div>
-                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">SQL and Relational Databases 101</div></div></div>
-                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Introduction to Modern AI</div></div></div>
-                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Google Gemini Certified Student</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">TCS iON Career Edge – AI Foundation</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Tata Consultancy Services (ID: 279243-33521379-1016)</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">AI Skills Passport</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">EY &amp; Microsoft</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">AI – Data Engineering Analyst</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">NASSCOM • Skill India Digital Hub</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Mastering Power BI: Data Analysis &amp; Dashboard</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Skill India Digital Hub • PHN Technology</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Python 101 for Data Science &amp; SQL Databases</div></div></div>
                     </div>
                 </div>
 
-                <!-- Cybersecurity & Professional Training -->
+                <!-- Cybersecurity & Digital Forensics -->
                 <div class="glass-panel" style="padding: 26px; border-radius: 18px;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-                        <span style="font-size: 1.3rem;">🔐</span>
-                        <h3 style="margin: 0; font-size: 0.95rem; color: #ff5500; text-transform: uppercase; letter-spacing: 0.06em;">Cybersecurity &amp; Professional Training</h3>
+                        <span style="font-size: 1.3rem;">🛡️</span>
+                        <h3 style="margin: 0; font-size: 0.95rem; color: #ff5500; text-transform: uppercase; letter-spacing: 0.06em;">Cybersecurity &amp; Digital Forensics</h3>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Cybersécurité : Comment se protéger des escrocs</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Sodruzhestvo (Certificate of Completion)</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">IT Forensic Analyst</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">NASSCOM • Skill India Digital Hub</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">National Cyber Awareness Quiz (100% Score)</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Cyber Sahyog • Cyber Dost / I4C (CSY-0U4GUOWU)</div></div></div>
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Network Security Engineer</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Skill India</div></div></div>
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Cyber Job Simulation</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Deloitte / Forage</div></div></div>
                     </div>
                 </div>
 
-                <!-- Remote Sensing & Geospatial -->
+                <!-- Internships & Professional Experience -->
                 <div class="glass-panel" style="padding: 26px; border-radius: 18px;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-                        <span style="font-size: 1.3rem;">🛰️</span>
-                        <h3 style="margin: 0; font-size: 0.95rem; color: #ff5500; text-transform: uppercase; letter-spacing: 0.06em;">Remote Sensing &amp; Geospatial Learning</h3>
+                        <span style="font-size: 1.3rem;">💼</span>
+                        <h3 style="margin: 0; font-size: 0.95rem; color: #ff5500; text-transform: uppercase; letter-spacing: 0.06em;">Internships &amp; Professional Experience</h3>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Fundamentals of Remote Sensing</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">NASA ARSET</div></div></div>
-                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">AI/ML for HydroInformatics</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">ISRO / IIRS</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Data Science with Python Analyst Internship</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">YuvaIntern • Henry Harvin &amp; NSDC (YI/2026/212465/461426)</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">AI Prompt Engineering Internship Selection</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Internshala • InAmigos Foundation (e9bflpmek3l)</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">AI Web Development Internship Selection</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Internshala • InAmigos Foundation (5o2mvf5b4mi)</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Campus Ambassador Internship Selection</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Internshala • NayePankh Foundation (6jqe4gqklpa)</div></div></div>
                     </div>
                 </div>
 
-                <!-- Computer Applications & Digital Skills -->
+                <!-- Web Development, Computing & Civic Honors -->
                 <div class="glass-panel" style="padding: 26px; border-radius: 18px;">
                     <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 16px;">
-                        <span style="font-size: 1.3rem;">💻</span>
-                        <h3 style="margin: 0; font-size: 0.95rem; color: #ff5500; text-transform: uppercase; letter-spacing: 0.06em;">Computer Applications &amp; Digital Skills</h3>
+                        <span style="font-size: 1.3rem;">🌐</span>
+                        <h3 style="margin: 0; font-size: 0.95rem; color: #ff5500; text-transform: uppercase; letter-spacing: 0.06em;">Web Development &amp; Achievements</h3>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">ADCA, DCA, DAOP, DFA, DPT, DCTT, ADFA, BCC</div></div></div>
-                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Data Entry Operator (DEO)</div></div></div>
-                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">MS Office, Advanced Excel, Tally, GST, HTML &amp; Photoshop</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Build a Free Website with WordPress</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Coursera Project Network (5ZJZP08VPDDI)</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Viksit Bharat Young Leaders Dialogue 2027 Quiz</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Ministry of Youth Affairs and Sports • MyGov</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Remote Sensing &amp; HydroInformatics</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">NASA ARSET &amp; ISRO / IIRS</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">ADCA, DCA, DAOP &amp; Advanced Computer Applications</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">National Skill Literacy Mission</div></div></div>
                     </div>
                 </div>
 
@@ -3388,10 +3481,10 @@
 
             function getRadius() {
                 const w = window.innerWidth;
-                if (w < 480) return 210;
-                if (w < 768) return 260;
-                if (w < 1024) return 330;
-                return 400;
+                if (w < 480) return 380;
+                if (w < 768) return 480;
+                if (w < 1024) return 560;
+                return 640;
             }
 
             function positionCards() {
