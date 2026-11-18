@@ -1629,7 +1629,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            perspective: 2600px;
+            perspective: 2750px;
             perspective-origin: 50% 46%;
             overflow: hidden;
             user-select: none;
@@ -1643,8 +1643,8 @@
         /* 3D Holographic Orbit Floor */
         .cert-3d-orbit-floor {
             position: absolute;
-            width: 1800px;
-            height: 1800px;
+            width: 2000px;
+            height: 2000px;
             border-radius: 50%;
             transform: rotateX(75deg) translateZ(-110px);
             border: 2px dashed rgba(255, 85, 0, 0.35);
@@ -1938,10 +1938,176 @@
                 height: 82px;
             }
         }
+    
+        /* ══════════════════════════════════════════════════════════════
+           PHONE & TABLET IMMERSIVE ANIMATIONS & MOTION POLISH
+           ══════════════════════════════════════════════════════════════ */
+
+        /* Ambient floating neon energy orbs for mobile/tablet background */
+        .mobile-ambient-orb-1,
+        .mobile-ambient-orb-2 {
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 0;
+            filter: blur(85px);
+            opacity: 0.18;
+            will-change: transform;
+        }
+
+        .mobile-ambient-orb-1 {
+            width: 320px;
+            height: 320px;
+            background: radial-gradient(circle, #ff5500 0%, #ff2200 65%, transparent 100%);
+            top: 12%;
+            left: -90px;
+            animation: driftOrb1 16s ease-in-out infinite alternate;
+        }
+
+        .mobile-ambient-orb-2 {
+            width: 360px;
+            height: 360px;
+            background: radial-gradient(circle, #ff6600 0%, #cc0055 70%, transparent 100%);
+            bottom: 18%;
+            right: -100px;
+            animation: driftOrb2 22s ease-in-out infinite alternate;
+        }
+
+        @keyframes driftOrb1 {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(90px, 140px, 0) scale(1.18); }
+            100% { transform: translate3d(50px, 260px, 0) scale(0.92); }
+        }
+
+        @keyframes driftOrb2 {
+            0% { transform: translate3d(0, 0, 0) scale(1); }
+            50% { transform: translate3d(-100px, -150px, 0) scale(1.22); }
+            100% { transform: translate3d(-50px, -240px, 0) scale(0.94); }
+        }
+
+        /* Avatar Glowing Breathing Aura on Mobile & Tablet */
+        .image-placeholder {
+            position: relative;
+        }
+
+        @media (max-width: 1024px) {
+            .image-placeholder img {
+                border-radius: 24px;
+                box-shadow: 0 0 30px rgba(255, 85, 0, 0.35), 0 15px 45px rgba(0, 0, 0, 0.7);
+                animation: mobileAvatarBreathing 5s ease-in-out infinite alternate;
+                will-change: transform, box-shadow;
+            }
+
+            @keyframes mobileAvatarBreathing {
+                0% {
+                    box-shadow: 0 0 25px rgba(255, 85, 0, 0.3), 0 12px 35px rgba(0, 0, 0, 0.7);
+                    transform: scale(1);
+                }
+                100% {
+                    box-shadow: 0 0 45px rgba(255, 110, 0, 0.55), 0 20px 55px rgba(255, 85, 0, 0.25);
+                    transform: scale(1.015);
+                }
+            }
+
+            /* Tactile Tap & Touch Micro-Feedback for Phone & Tablet */
+            button, .btn, .social-btn, .filter-btn, .cert-ctrl-btn, .skill-tag, .mobile-stat-card, a.glass-panel {
+                -webkit-tap-highlight-color: transparent;
+                transition: transform 0.16s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.16s ease, filter 0.16s ease !important;
+            }
+
+            button:active, .btn:active, .social-btn:active, .filter-btn:active, .cert-ctrl-btn:active {
+                transform: scale(0.93) translateY(2px) !important;
+                filter: brightness(1.15);
+            }
+
+            .glass-panel {
+                transition: transform 0.24s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.24s ease, box-shadow 0.24s ease !important;
+                -webkit-tap-highlight-color: transparent;
+            }
+
+            .glass-panel:active {
+                transform: scale(0.985);
+                border-color: rgba(255, 85, 0, 0.55) !important;
+            }
+
+            /* Shimmer glow on skill badges on phone/tablet */
+            .skill-tag {
+                background: linear-gradient(135deg, rgba(255, 85, 0, 0.14) 0%, rgba(20, 20, 30, 0.9) 100%);
+                border: 1px solid rgba(255, 85, 0, 0.35);
+            }
+            .skill-tag:active {
+                transform: scale(0.92);
+                border-color: #ff5500;
+                box-shadow: 0 0 15px rgba(255, 85, 0, 0.5);
+            }
+        }
+
+        /* Animated 3D Floating Swipe Hint Banner for Phone & Tablet */
+        .mobile-3d-hint {
+            display: none;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 8px 18px;
+            margin: 10px auto 0 auto;
+            border-radius: 25px;
+            background: rgba(255, 85, 0, 0.14);
+            border: 1px solid rgba(255, 85, 0, 0.38);
+            color: #ffaa66;
+            font-size: 0.8rem;
+            font-weight: 600;
+            letter-spacing: 0.03em;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 4px 18px rgba(255, 85, 0, 0.22);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+            width: fit-content;
+            pointer-events: none;
+        }
+
+        @media (max-width: 1024px) {
+            .mobile-3d-hint {
+                display: flex;
+            }
+        }
+
+        .hint-hand-left {
+            display: inline-block;
+            animation: bounceLeftHand 1.6s ease-in-out infinite;
+        }
+
+        .hint-hand-right {
+            display: inline-block;
+            animation: bounceRightHand 1.6s ease-in-out infinite;
+        }
+
+        @keyframes bounceLeftHand {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(-6px); }
+        }
+
+        @keyframes bounceRightHand {
+            0%, 100% { transform: translateX(0); }
+            50% { transform: translateX(6px); }
+        }
+
+        /* Pulsing Back to Top Button on Mobile & Tablet */
+        #back-to-top {
+            box-shadow: 0 6px 20px rgba(255, 85, 0, 0.4);
+            transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.25s ease, background 0.25s ease;
+        }
+        #back-to-top:active {
+            transform: scale(0.9) !important;
+        }
+
     </style>
 </head>
 
 <body>
+    <!-- Ambient Dynamic Floating Neon Glow Orbs for Mobile & Tablet -->
+    <div class="mobile-ambient-orb-1" aria-hidden="true"></div>
+    <div class="mobile-ambient-orb-2" aria-hidden="true"></div>
+
 
     <!-- Scroll Progress Bar -->
     <div id="scroll-progress"></div>
@@ -2484,10 +2650,22 @@
 
                     <!-- 3D Rotating Ring of Cards -->
                     <div class="cert-3d-ring" id="cert-3d-ring">
-                        <!-- 1. Introduction to Modern AI -->
-                        <div class="cert-3d-card" data-index="0" data-title="Introduction to Modern AI" data-issuer="Cisco Networking Academy • EdCreate Foundation" data-badge="CISCO AI" data-id="7c3d8992-a4fe-4494-88d6-ec3faeb2e892">
+                        <!-- 1. One Million Prompters -->
+                        <div class="cert-3d-card" data-index="0" data-title="One Million Prompters Initiative (Dubai Future Foundation)" data-issuer="Dubai Future Foundation • Dubai Centre for AI" data-badge="DUBAI AI" data-id="DFF-1M-PROMPT-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/cisco_modern_ai.jpg" alt="Introduction to Modern AI Certificate" class="cert-3d-card-img">
+                                <img src="certificates/dubai_one_million_prompters.jpg" alt="One Million Prompters Certificate" class="cert-3d-card-img" loading="lazy">
+                                <div class="cert-3d-card-badge">DUBAI AI</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">One Million Prompters</h4>
+                                <div class="cert-3d-card-meta"><span>Dubai Future Foundation</span> <span>2026</span></div>
+                            </div>
+                        </div>
+                        <!-- 2. Introduction to Modern AI -->
+                        <div class="cert-3d-card" data-index="1" data-title="Introduction to Modern AI - Course Completion" data-issuer="Cisco Networking Academy • Lynn Bloomer (Director)" data-badge="CISCO AI" data-id="CISCO-MODAI-2026">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/cisco_modern_ai_completion.jpg" alt="Introduction to Modern AI Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">CISCO AI</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2496,10 +2674,34 @@
                                 <div class="cert-3d-card-meta"><span>Cisco NetAcad</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 2. Claude 101 -->
-                        <div class="cert-3d-card" data-index="1" data-title="Claude 101 Certification" data-issuer="Claude Academy • Anthropic" data-badge="CLAUDE AI" data-id="6674942c4629c20ae8b78b57e9d2f83b">
+                        <!-- 3. Python Essentials 1 -->
+                        <div class="cert-3d-card" data-index="2" data-title="Python Essentials 1 - Statement of Achievement" data-issuer="Cisco Networking Academy • OpenEDG Python Institute" data-badge="PYTHON INST" data-id="CISCO-PY1-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/claude_101.jpg" alt="Claude 101 Certificate" class="cert-3d-card-img">
+                                <img src="certificates/cisco_python_essentials.jpg" alt="Python Essentials 1 Certificate" class="cert-3d-card-img" loading="lazy">
+                                <div class="cert-3d-card-badge">PYTHON INST</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Python Essentials 1</h4>
+                                <div class="cert-3d-card-meta"><span>Cisco & Python Inst.</span> <span>2026</span></div>
+                            </div>
+                        </div>
+                        <!-- 4. Cisco Modern AI (EdCreate) -->
+                        <div class="cert-3d-card" data-index="3" data-title="Introduction to Modern AI (EdCreate Foundation)" data-issuer="Cisco Networking Academy • EdCreate Foundation" data-badge="CISCO AI" data-id="7c3d8992-a4fe-4494-88d6-ec3faeb2e892">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/cisco_modern_ai.jpg" alt="Cisco Modern AI (EdCreate) Certificate" class="cert-3d-card-img" loading="lazy">
+                                <div class="cert-3d-card-badge">CISCO AI</div>
+                                <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
+                            </div>
+                            <div class="cert-3d-card-info">
+                                <h4 class="cert-3d-card-title">Cisco Modern AI (EdCreate)</h4>
+                                <div class="cert-3d-card-meta"><span>Cisco NetAcad</span> <span>2026</span></div>
+                            </div>
+                        </div>
+                        <!-- 5. Claude 101 -->
+                        <div class="cert-3d-card" data-index="4" data-title="Claude 101 Certification" data-issuer="Claude Academy • Anthropic" data-badge="CLAUDE AI" data-id="6674942c4629c20ae8b78b57e9d2f83b">
+                            <div class="cert-3d-card-img-wrap">
+                                <img src="certificates/claude_101.jpg" alt="Claude 101 Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">CLAUDE AI</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2508,10 +2710,10 @@
                                 <div class="cert-3d-card-meta"><span>Claude Academy</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 3. Claude with Vertex AI -->
-                        <div class="cert-3d-card" data-index="2" data-title="Claude with Google Cloud's Vertex AI" data-issuer="Claude Academy • Google Cloud & Anthropic" data-badge="VERTEX AI" data-id="7170e8ef6a28fd8aa717674f631c2ffd">
+                        <!-- 6. Claude with Vertex AI -->
+                        <div class="cert-3d-card" data-index="5" data-title="Claude with Google Cloud's Vertex AI" data-issuer="Claude Academy • Google Cloud & Anthropic" data-badge="VERTEX AI" data-id="7170e8ef6a28fd8aa717674f631c2ffd">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/claude_vertex_ai.jpg" alt="Claude with Vertex AI Certificate" class="cert-3d-card-img">
+                                <img src="certificates/claude_vertex_ai.jpg" alt="Claude with Vertex AI Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">VERTEX AI</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2520,10 +2722,10 @@
                                 <div class="cert-3d-card-meta"><span>Claude & Vertex AI</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 4. Gemini Student - University -->
-                        <div class="cert-3d-card" data-index="3" data-title="Gemini Certified Student - University Qualification" data-issuer="Google for Education" data-badge="GOOGLE AI" data-id="GEMINI-UNIV-2026">
+                        <!-- 7. Gemini Student - University -->
+                        <div class="cert-3d-card" data-index="6" data-title="Gemini Certified Student - University Qualification" data-issuer="Google for Education" data-badge="GOOGLE AI" data-id="GEMINI-UNIV-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/google_gemini_university.png" alt="Gemini Student - University Certificate" class="cert-3d-card-img">
+                                <img src="certificates/google_gemini_university.png" alt="Gemini Student - University Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">GOOGLE AI</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2532,10 +2734,10 @@
                                 <div class="cert-3d-card-meta"><span>Google for Education</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 5. Gemini Student - K12 -->
-                        <div class="cert-3d-card" data-index="4" data-title="Google Gemini Certified Student (K12)" data-issuer="Google for Education" data-badge="GOOGLE AI" data-id="GEMINI-K12-2026">
+                        <!-- 8. Gemini Student - K12 -->
+                        <div class="cert-3d-card" data-index="7" data-title="Google Gemini Certified Student (K12)" data-issuer="Google for Education" data-badge="GOOGLE AI" data-id="GEMINI-K12-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/google_gemini_certified.png" alt="Gemini Student - K12 Certificate" class="cert-3d-card-img">
+                                <img src="certificates/google_gemini_certified.png" alt="Gemini Student - K12 Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">GOOGLE AI</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2544,10 +2746,10 @@
                                 <div class="cert-3d-card-meta"><span>Google for Education</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 6. Prompt Engineering -->
-                        <div class="cert-3d-card" data-index="5" data-title="Prompt Engineering" data-issuer="FreeAcademy.ai • Final Exam Passed" data-badge="PROMPT ENG" data-id="FA-2026-PE-0K20KW">
+                        <!-- 9. Prompt Engineering -->
+                        <div class="cert-3d-card" data-index="8" data-title="Prompt Engineering" data-issuer="FreeAcademy.ai • Final Exam Passed" data-badge="PROMPT ENG" data-id="FA-2026-PE-0K20KW">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/prompt_engineering.jpg" alt="Prompt Engineering Certificate" class="cert-3d-card-img">
+                                <img src="certificates/prompt_engineering.jpg" alt="Prompt Engineering Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">PROMPT ENG</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2556,10 +2758,10 @@
                                 <div class="cert-3d-card-meta"><span>FreeAcademy.ai</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 7. Python 101 for Data Science -->
-                        <div class="cert-3d-card" data-index="6" data-title="Python 101 for Data Science (PY0101EN)" data-issuer="IBM Developer Skills Network • Cognitive Class" data-badge="IBM PYTHON" data-id="07cbf9eb1fef48e595ffaf07dccc3c76">
+                        <!-- 10. Python 101 for Data Science -->
+                        <div class="cert-3d-card" data-index="9" data-title="Python 101 for Data Science (PY0101EN)" data-issuer="IBM Developer Skills Network • Cognitive Class" data-badge="IBM PYTHON" data-id="07cbf9eb1fef48e595ffaf07dccc3c76">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/ibm_python_101.jpg" alt="Python 101 for Data Science Certificate" class="cert-3d-card-img">
+                                <img src="certificates/ibm_python_101.jpg" alt="Python 101 for Data Science Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">IBM PYTHON</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2568,10 +2770,10 @@
                                 <div class="cert-3d-card-meta"><span>IBM / Cognitive Class</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 8. SQL & Relational Databases -->
-                        <div class="cert-3d-card" data-index="7" data-title="SQL and Relational Databases 101 (DB0101EN)" data-issuer="IBM Skills Network • Cognitive Class" data-badge="IBM SQL" data-id="47f8a0380e5a44e597d39912791401d9">
+                        <!-- 11. SQL & Relational Databases -->
+                        <div class="cert-3d-card" data-index="10" data-title="SQL and Relational Databases 101 (DB0101EN)" data-issuer="IBM Skills Network • Cognitive Class" data-badge="IBM SQL" data-id="47f8a0380e5a44e597d39912791401d9">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/ibm_sql_relational_databases.png" alt="SQL & Relational Databases Certificate" class="cert-3d-card-img">
+                                <img src="certificates/ibm_sql_relational_databases.png" alt="SQL & Relational Databases Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">IBM SQL</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2580,10 +2782,10 @@
                                 <div class="cert-3d-card-meta"><span>IBM / Cognitive Class</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 9. TCS iON – AI Foundation -->
-                        <div class="cert-3d-card" data-index="8" data-title="TCS iON Career Edge – AI Foundation" data-issuer="Tata Consultancy Services (TCS iON)" data-badge="TCS iON AI" data-id="279243-33521379-1016">
+                        <!-- 12. TCS iON – AI Foundation -->
+                        <div class="cert-3d-card" data-index="11" data-title="TCS iON Career Edge – AI Foundation" data-issuer="Tata Consultancy Services (TCS iON)" data-badge="TCS iON AI" data-id="279243-33521379-1016">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/tcs_ion_ai_foundation.jpg" alt="TCS iON – AI Foundation Certificate" class="cert-3d-card-img">
+                                <img src="certificates/tcs_ion_ai_foundation.jpg" alt="TCS iON – AI Foundation Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">TCS iON AI</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2592,10 +2794,10 @@
                                 <div class="cert-3d-card-meta"><span>Tata Consultancy Services</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 10. AI Skills Passport -->
-                        <div class="cert-3d-card" data-index="9" data-title="AI Skills Passport" data-issuer="EY & Microsoft" data-badge="EY & MSFT" data-id="EY-MSFT-AI-2026">
+                        <!-- 13. AI Skills Passport -->
+                        <div class="cert-3d-card" data-index="12" data-title="AI Skills Passport" data-issuer="EY & Microsoft" data-badge="EY & MSFT" data-id="EY-MSFT-AI-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/ey_microsoft_ai_passport.jpg" alt="AI Skills Passport Certificate" class="cert-3d-card-img">
+                                <img src="certificates/ey_microsoft_ai_passport.jpg" alt="AI Skills Passport Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">EY & MSFT</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2604,10 +2806,10 @@
                                 <div class="cert-3d-card-meta"><span>EY & Microsoft</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 11. AI – Data Engineering -->
-                        <div class="cert-3d-card" data-index="10" data-title="AI – Data Engineering Analyst" data-issuer="NASSCOM • Skill India Digital Hub" data-badge="SKILL INDIA" data-id="NASSCOM-AI-2026">
+                        <!-- 14. AI – Data Engineering -->
+                        <div class="cert-3d-card" data-index="13" data-title="AI – Data Engineering Analyst" data-issuer="NASSCOM • Skill India Digital Hub" data-badge="SKILL INDIA" data-id="NASSCOM-AI-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/nasscom_ai_data_engineer.jpg" alt="AI – Data Engineering Certificate" class="cert-3d-card-img">
+                                <img src="certificates/nasscom_ai_data_engineer.jpg" alt="AI – Data Engineering Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">SKILL INDIA</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2616,10 +2818,10 @@
                                 <div class="cert-3d-card-meta"><span>NASSCOM / Skill India</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 12. Exploratory Data Analysis -->
-                        <div class="cert-3d-card" data-index="11" data-title="Exploratory Data Analysis" data-issuer="FutureSkills Prime • NASSCOM & MeitY" data-badge="NASSCOM EDA" data-id="FSP/2026/8/6265775">
+                        <!-- 15. Exploratory Data Analysis -->
+                        <div class="cert-3d-card" data-index="14" data-title="Exploratory Data Analysis" data-issuer="FutureSkills Prime • NASSCOM & MeitY" data-badge="NASSCOM EDA" data-id="FSP/2026/8/6265775">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/nasscom_eda.jpg" alt="Exploratory Data Analysis Certificate" class="cert-3d-card-img">
+                                <img src="certificates/nasscom_eda.jpg" alt="Exploratory Data Analysis Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">NASSCOM EDA</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2628,10 +2830,10 @@
                                 <div class="cert-3d-card-meta"><span>NASSCOM FutureSkills</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 13. Mastering Power BI -->
-                        <div class="cert-3d-card" data-index="12" data-title="Mastering Power BI: Data Analysis & Dashboard" data-issuer="Skill India Digital Hub • PHN Technology" data-badge="POWER BI" data-id="PHN-SKILL-PBI-2026">
+                        <!-- 16. Mastering Power BI -->
+                        <div class="cert-3d-card" data-index="15" data-title="Mastering Power BI: Data Analysis & Dashboard" data-issuer="Skill India Digital Hub • PHN Technology" data-badge="POWER BI" data-id="PHN-SKILL-PBI-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/skillindia_power_bi.jpg" alt="Mastering Power BI Certificate" class="cert-3d-card-img">
+                                <img src="certificates/skillindia_power_bi.jpg" alt="Mastering Power BI Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">POWER BI</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2640,10 +2842,10 @@
                                 <div class="cert-3d-card-meta"><span>Skill India / PHN</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 14. Fundamentals of Remote Sensing -->
-                        <div class="cert-3d-card" data-index="13" data-title="Fundamentals of Remote Sensing" data-issuer="NASA Applied Remote Sensing Training (ARSET)" data-badge="NASA ARSET" data-id="NASA-ARSET-2026">
+                        <!-- 17. Fundamentals of Remote Sensing -->
+                        <div class="cert-3d-card" data-index="16" data-title="Fundamentals of Remote Sensing" data-issuer="NASA Applied Remote Sensing Training (ARSET)" data-badge="NASA ARSET" data-id="NASA-ARSET-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/nasa_arset_remote_sensing.jpg" alt="Fundamentals of Remote Sensing Certificate" class="cert-3d-card-img">
+                                <img src="certificates/nasa_arset_remote_sensing.jpg" alt="Fundamentals of Remote Sensing Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">NASA ARSET</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2652,10 +2854,10 @@
                                 <div class="cert-3d-card-meta"><span>NASA ARSET</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 15. Network Security Engineer -->
-                        <div class="cert-3d-card" data-index="14" data-title="Network Security Engineer" data-issuer="Skill India Digital Hub • NASSCOM" data-badge="NETWORK SEC" data-id="SKILL-NETSEC-2026">
+                        <!-- 18. Network Security Engineer -->
+                        <div class="cert-3d-card" data-index="17" data-title="Network Security Engineer" data-issuer="Skill India Digital Hub • NASSCOM" data-badge="NETWORK SEC" data-id="SKILL-NETSEC-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/skillindia_network_security.jpg" alt="Network Security Engineer Certificate" class="cert-3d-card-img">
+                                <img src="certificates/skillindia_network_security.jpg" alt="Network Security Engineer Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">NETWORK SEC</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2664,10 +2866,10 @@
                                 <div class="cert-3d-card-meta"><span>Skill India / NASSCOM</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 16. Cybersécurité -->
-                        <div class="cert-3d-card" data-index="15" data-title="Cybersécurité : Comment se protéger des escrocs" data-issuer="Sodruzhestvo • Les bases de la cybersécurité" data-badge="CYBERSÉCURITÉ" data-id="SODR-CYBER-2026">
+                        <!-- 19. Cybersécurité -->
+                        <div class="cert-3d-card" data-index="18" data-title="Cybersécurité : Comment se protéger des escrocs" data-issuer="Sodruzhestvo • Les bases de la cybersécurité" data-badge="CYBERSÉCURITÉ" data-id="SODR-CYBER-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/cybersecurite.jpg" alt="Cybersécurité Certificate" class="cert-3d-card-img">
+                                <img src="certificates/cybersecurite.jpg" alt="Cybersécurité Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">CYBERSÉCURITÉ</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2676,10 +2878,10 @@
                                 <div class="cert-3d-card-meta"><span>Sodruzhestvo</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 17. IT Forensic Analyst -->
-                        <div class="cert-3d-card" data-index="16" data-title="IT Forensic Analyst" data-issuer="NASSCOM • Skill India Digital Hub" data-badge="IT FORENSIC" data-id="NASSCOM-IT-FOR-2026">
+                        <!-- 20. IT Forensic Analyst -->
+                        <div class="cert-3d-card" data-index="19" data-title="IT Forensic Analyst" data-issuer="NASSCOM • Skill India Digital Hub" data-badge="IT FORENSIC" data-id="NASSCOM-IT-FOR-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/nasscom_it_forensic.jpg" alt="IT Forensic Analyst Certificate" class="cert-3d-card-img">
+                                <img src="certificates/nasscom_it_forensic.jpg" alt="IT Forensic Analyst Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">IT FORENSIC</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2688,10 +2890,10 @@
                                 <div class="cert-3d-card-meta"><span>NASSCOM / Skill India</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 18. National Cyber Awareness -->
-                        <div class="cert-3d-card" data-index="17" data-title="National Cyber Awareness Quiz (100% Score)" data-issuer="Cyber Sahyog • Cyber Dost / I4C" data-badge="CYBER AWARENESS" data-id="CSY-0U4GUOWU">
+                        <!-- 21. National Cyber Awareness -->
+                        <div class="cert-3d-card" data-index="20" data-title="National Cyber Awareness Quiz (100% Score)" data-issuer="Cyber Sahyog • Cyber Dost / I4C" data-badge="CYBER AWARENESS" data-id="CSY-0U4GUOWU">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/cyber_sahyog_awareness.jpg" alt="National Cyber Awareness Certificate" class="cert-3d-card-img">
+                                <img src="certificates/cyber_sahyog_awareness.jpg" alt="National Cyber Awareness Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">CYBER AWARENESS</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2700,10 +2902,10 @@
                                 <div class="cert-3d-card-meta"><span>Cyber Sahyog / Cyber Dost</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 19. Junior Data Scientist -->
-                        <div class="cert-3d-card" data-index="18" data-title="Junior Data Scientist Internship (Nagpur)" data-issuer="YuvaIntern • Henry Harvin & NSDC" data-badge="EXPERIENCE" data-id="YI/2026/212465/461424">
+                        <!-- 22. Junior Data Scientist -->
+                        <div class="cert-3d-card" data-index="21" data-title="Junior Data Scientist Internship (Nagpur)" data-issuer="YuvaIntern • Henry Harvin & NSDC" data-badge="EXPERIENCE" data-id="YI/2026/212465/461424">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/yuvaintern_junior_data_scientist.png" alt="Junior Data Scientist Certificate" class="cert-3d-card-img">
+                                <img src="certificates/yuvaintern_junior_data_scientist.png" alt="Junior Data Scientist Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">EXPERIENCE</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2712,10 +2914,10 @@
                                 <div class="cert-3d-card-meta"><span>YuvaIntern / Henry Harvin</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 20. Data Science with Python -->
-                        <div class="cert-3d-card" data-index="19" data-title="Data Science with Python Analyst Internship" data-issuer="YuvaIntern • Henry Harvin & NSDC" data-badge="EXPERIENCE" data-id="YI/2026/212465/461426">
+                        <!-- 23. Data Science with Python -->
+                        <div class="cert-3d-card" data-index="22" data-title="Data Science with Python Analyst Internship" data-issuer="YuvaIntern • Henry Harvin & NSDC" data-badge="EXPERIENCE" data-id="YI/2026/212465/461426">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/yuvaintern_python_data_science.jpg" alt="Data Science with Python Certificate" class="cert-3d-card-img">
+                                <img src="certificates/yuvaintern_python_data_science.jpg" alt="Data Science with Python Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">EXPERIENCE</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2724,10 +2926,10 @@
                                 <div class="cert-3d-card-meta"><span>YuvaIntern / Henry Harvin</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 21. AI Prompt Engineering -->
-                        <div class="cert-3d-card" data-index="20" data-title="AI Prompt Engineering Internship Selection" data-issuer="Internshala • InAmigos Foundation" data-badge="INTERNSHIP" data-id="e9bflpmek3l">
+                        <!-- 24. AI Prompt Engineering -->
+                        <div class="cert-3d-card" data-index="23" data-title="AI Prompt Engineering Internship Selection" data-issuer="Internshala • InAmigos Foundation" data-badge="INTERNSHIP" data-id="e9bflpmek3l">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/internshala_ai_prompt_eng.jpg" alt="AI Prompt Engineering Certificate" class="cert-3d-card-img">
+                                <img src="certificates/internshala_ai_prompt_eng.jpg" alt="AI Prompt Engineering Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">INTERNSHIP</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2736,10 +2938,10 @@
                                 <div class="cert-3d-card-meta"><span>Internshala / InAmigos</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 22. AI Web Development -->
-                        <div class="cert-3d-card" data-index="21" data-title="AI Web Development Internship Selection" data-issuer="Internshala • InAmigos Foundation" data-badge="INTERNSHIP" data-id="5o2mvf5b4mi">
+                        <!-- 25. AI Web Development -->
+                        <div class="cert-3d-card" data-index="24" data-title="AI Web Development Internship Selection" data-issuer="Internshala • InAmigos Foundation" data-badge="INTERNSHIP" data-id="5o2mvf5b4mi">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/internshala_ai_web_dev.jpg" alt="AI Web Development Certificate" class="cert-3d-card-img">
+                                <img src="certificates/internshala_ai_web_dev.jpg" alt="AI Web Development Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">INTERNSHIP</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2748,10 +2950,10 @@
                                 <div class="cert-3d-card-meta"><span>Internshala / InAmigos</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 23. Campus Ambassador -->
-                        <div class="cert-3d-card" data-index="22" data-title="Campus Ambassador at Unlox Academy" data-issuer="Unlox Academy" data-badge="LEADERSHIP" data-id="UNLOX-CA-2026">
+                        <!-- 26. Campus Ambassador -->
+                        <div class="cert-3d-card" data-index="25" data-title="Campus Ambassador at Unlox Academy" data-issuer="Unlox Academy" data-badge="LEADERSHIP" data-id="UNLOX-CA-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/unlox_campus_ambassador.jpg" alt="Campus Ambassador Certificate" class="cert-3d-card-img">
+                                <img src="certificates/unlox_campus_ambassador.jpg" alt="Campus Ambassador Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">LEADERSHIP</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2760,10 +2962,10 @@
                                 <div class="cert-3d-card-meta"><span>Unlox Academy</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 24. Campus Ambassador -->
-                        <div class="cert-3d-card" data-index="23" data-title="Campus Ambassador Internship Selection" data-issuer="Internshala • NayePankh Foundation" data-badge="LEADERSHIP" data-id="6jqe4gqklpa">
+                        <!-- 27. Campus Ambassador -->
+                        <div class="cert-3d-card" data-index="26" data-title="Campus Ambassador Internship Selection" data-issuer="Internshala • NayePankh Foundation" data-badge="LEADERSHIP" data-id="6jqe4gqklpa">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/internshala_campus_ambassador.jpg" alt="Campus Ambassador Certificate" class="cert-3d-card-img">
+                                <img src="certificates/internshala_campus_ambassador.jpg" alt="Campus Ambassador Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">LEADERSHIP</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2772,10 +2974,10 @@
                                 <div class="cert-3d-card-meta"><span>Internshala / NayePankh</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 25. Nestlé E-learning Resilience -->
-                        <div class="cert-3d-card" data-index="24" data-title="Nestlé E-learning 2026 | Resilience" data-issuer="Nestlé Nesternship • needs YOUth" data-badge="NESTLÉ" data-id="NESTLE-RESIL-2026">
+                        <!-- 28. Nestlé E-learning Resilience -->
+                        <div class="cert-3d-card" data-index="27" data-title="Nestlé E-learning 2026 | Resilience" data-issuer="Nestlé Nesternship • needs YOUth" data-badge="NESTLÉ" data-id="NESTLE-RESIL-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/nestle_resilience.jpg" alt="Nestlé E-learning Resilience Certificate" class="cert-3d-card-img">
+                                <img src="certificates/nestle_resilience.jpg" alt="Nestlé E-learning Resilience Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">NESTLÉ</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2784,10 +2986,10 @@
                                 <div class="cert-3d-card-meta"><span>Nestlé Nesternship</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 26. Website with WordPress -->
-                        <div class="cert-3d-card" data-index="25" data-title="Build a Free Website with WordPress" data-issuer="Coursera Project Network" data-badge="COURSERA" data-id="5ZJZP08VPDDI">
+                        <!-- 29. Website with WordPress -->
+                        <div class="cert-3d-card" data-index="28" data-title="Build a Free Website with WordPress" data-issuer="Coursera Project Network" data-badge="COURSERA" data-id="5ZJZP08VPDDI">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/coursera_wordpress.jpg" alt="Website with WordPress Certificate" class="cert-3d-card-img">
+                                <img src="certificates/coursera_wordpress.jpg" alt="Website with WordPress Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">COURSERA</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2796,10 +2998,10 @@
                                 <div class="cert-3d-card-meta"><span>Coursera Network</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 27. VBYLD Essay 2027 -->
-                        <div class="cert-3d-card" data-index="26" data-title="Viksit Bharat Young Leaders Dialogue (VBYLD) Essay 2027" data-issuer="Ministry of Youth Affairs and Sports • MY Bharat" data-badge="MY BHARAT" data-id="MYBHARAT-VBYLD-2026">
+                        <!-- 30. VBYLD Essay 2027 -->
+                        <div class="cert-3d-card" data-index="29" data-title="Viksit Bharat Young Leaders Dialogue (VBYLD) Essay 2027" data-issuer="Ministry of Youth Affairs and Sports • MY Bharat" data-badge="MY BHARAT" data-id="MYBHARAT-VBYLD-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/mybharat_vbyld_essay.jpg" alt="VBYLD Essay 2027 Certificate" class="cert-3d-card-img">
+                                <img src="certificates/mybharat_vbyld_essay.jpg" alt="VBYLD Essay 2027 Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">MY BHARAT</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2808,10 +3010,10 @@
                                 <div class="cert-3d-card-meta"><span>Ministry of Youth Affairs</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 28. Voices for Nasha Mukt Bharat -->
-                        <div class="cert-3d-card" data-index="27" data-title="National Essay Competition - Voices for a Nasha Mukt Bharat" data-issuer="Ministry of Youth Affairs and Sports • MY Bharat" data-badge="MY BHARAT" data-id="MYBHARAT-NMB-2026">
+                        <!-- 31. Voices for Nasha Mukt Bharat -->
+                        <div class="cert-3d-card" data-index="30" data-title="National Essay Competition - Voices for a Nasha Mukt Bharat" data-issuer="Ministry of Youth Affairs and Sports • MY Bharat" data-badge="MY BHARAT" data-id="MYBHARAT-NMB-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/mybharat_nasha_mukt_essay.jpg" alt="Voices for Nasha Mukt Bharat Certificate" class="cert-3d-card-img">
+                                <img src="certificates/mybharat_nasha_mukt_essay.jpg" alt="Voices for Nasha Mukt Bharat Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">MY BHARAT</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2820,10 +3022,10 @@
                                 <div class="cert-3d-card-meta"><span>Ministry of Youth Affairs</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 29. Viksit Bharat Quiz -->
-                        <div class="cert-3d-card" data-index="28" data-title="Viksit Bharat Young Leaders Dialogue Quiz" data-issuer="Ministry of Youth Affairs • MyGov" data-badge="MYGOV / GOVT" data-id="VBYLD-2027">
+                        <!-- 32. Viksit Bharat Quiz -->
+                        <div class="cert-3d-card" data-index="31" data-title="Viksit Bharat Young Leaders Dialogue Quiz" data-issuer="Ministry of Youth Affairs • MyGov" data-badge="MYGOV / GOVT" data-id="VBYLD-2027">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/viksit_bharat_quiz.jpg" alt="Viksit Bharat Quiz Certificate" class="cert-3d-card-img">
+                                <img src="certificates/viksit_bharat_quiz.jpg" alt="Viksit Bharat Quiz Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">MYGOV / GOVT</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2832,10 +3034,10 @@
                                 <div class="cert-3d-card-meta"><span>Ministry of Youth Affairs</span> <span>2026</span></div>
                             </div>
                         </div>
-                        <!-- 30. MY Bharat Recognition -->
-                        <div class="cert-3d-card" data-index="29" data-title="Certificate of Recognition - Registered on MY Bharat" data-issuer="Ministry of Youth Affairs and Sports" data-badge="MY BHARAT" data-id="MYBHARAT-REG-2026">
+                        <!-- 33. MY Bharat Recognition -->
+                        <div class="cert-3d-card" data-index="32" data-title="Certificate of Recognition - Registered on MY Bharat" data-issuer="Ministry of Youth Affairs and Sports" data-badge="MY BHARAT" data-id="MYBHARAT-REG-2026">
                             <div class="cert-3d-card-img-wrap">
-                                <img src="certificates/mybharat_registration.jpg" alt="MY Bharat Recognition Certificate" class="cert-3d-card-img">
+                                <img src="certificates/mybharat_registration.jpg" alt="MY Bharat Recognition Certificate" class="cert-3d-card-img" loading="lazy">
                                 <div class="cert-3d-card-badge">MY BHARAT</div>
                                 <div class="cert-3d-card-overlay"><span>🔍 Click to View Full</span></div>
                             </div>
@@ -2851,6 +3053,12 @@
                 <!-- Drag / Swipe interaction guide -->
                 <div class="cert-3d-drag-hint">
                     <span>🔄 <strong>Tip:</strong> Drag horizontally (or swipe on phone) to spin the 3D circle • Hover to pause • Click any certificate to open fullscreen view</span>
+                </div>
+                <!-- Animated Floating Swipe Hint for Phone & Tablet -->
+                <div class="mobile-3d-hint" id="mobile-3d-hint">
+                    <span class="hint-hand-left">👈</span>
+                    <span>Touch &amp; swipe horizontally to rotate in 3D</span>
+                    <span class="hint-hand-right">👉</span>
                 </div>
             </div>
 
@@ -2886,7 +3094,10 @@
                         <h3 style="margin: 0; font-size: 0.95rem; color: #ff5500; text-transform: uppercase; letter-spacing: 0.06em;">AI, Data Science &amp; Analytics</h3>
                     </div>
                     <div style="display: flex; flex-direction: column; gap: 10px;">
-                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Introduction to Modern AI</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Cisco Networking Academy • EdCreate (ID: 7c3d8992-a4fe-4494-88d6-ec3faeb2e892)</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">One Million Prompters Initiative</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Dubai Future Foundation • Dubai Centre for Artificial Intelligence</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Introduction to Modern AI (Course Completion)</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Cisco Networking Academy • Lynn Bloomer (Director)</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Python Essentials 1 (Statement of Achievement)</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Cisco Networking Academy in collaboration with OpenEDG Python Institute</div></div></div>
+                        <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Introduction to Modern AI (EdCreate Foundation)</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Cisco Networking Academy • EdCreate (ID: 7c3d8992-a4fe-4494-88d6-ec3faeb2e892)</div></div></div>
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Google Gemini Certified Student (University)</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Google for Education (Aug 17, 2026 - Valid thru 2029)</div></div></div>
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Google Gemini Certified Student (K12)</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Google for Education (Oct 31, 2026)</div></div></div>
                         <div style="display: flex; gap: 10px;"><span style="color: #ff5500; margin-top: 1px;">▸</span><div><div style="color: #fff; font-size: 0.9rem; font-weight: 600;">Claude 101 Certification</div><div style="color: #777; font-size: 0.76rem; margin-top: 1px;">Claude Academy • Anthropic (ID: 6674942c4629c20ae8b78b57e9d2f83b)</div></div></div>
@@ -3701,10 +3912,10 @@
 
             function getRadius() {
                 const w = window.innerWidth;
-                if (w < 480) return 780;
-                if (w < 768) return 980;
-                if (w < 1024) return 1300;
-                return 1600;
+                if (w < 480) return 860;
+                if (w < 768) return 1100;
+                if (w < 1024) return 1450;
+                return 1750;
             }
 
             function positionCards() {
@@ -3784,7 +3995,15 @@
 
             // Touch interaction
             stage.addEventListener('touchstart', (e) => {
-                if (e.touches.length === 1) startDrag(e.touches[0].clientX);
+                if (e.touches.length === 1) {
+                    startDrag(e.touches[0].clientX);
+                    const hint = document.getElementById('mobile-3d-hint');
+                    if (hint) {
+                        hint.style.opacity = '0';
+                        hint.style.transform = 'scale(0.9)';
+                        setTimeout(() => { hint.style.display = 'none'; }, 500);
+                    }
+                }
             }, { passive: true });
             window.addEventListener('touchmove', (e) => {
                 if (isDragging && e.touches.length === 1) moveDrag(e.touches[0].clientX);
